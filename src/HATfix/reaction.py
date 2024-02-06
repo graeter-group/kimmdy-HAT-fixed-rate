@@ -4,7 +4,7 @@ import logging
 import MDAnalysis as MDA
 import numpy as np
 
-from utils.trajectory_utils import extract_subsystems, save_capped_systems
+from HATfix.utils.trajectory_utils import extract_subsystems, save_capped_systems
 
 from kimmdy.recipe import Bind, Break, Place, Relax, Recipe, RecipeCollection
 from kimmdy.plugins import ReactionPlugin
@@ -27,7 +27,7 @@ class FixedRateHAT(ReactionPlugin):
         self.polling_rate = self.config.polling_rate
 
     def get_recipe_collection(self, files) -> RecipeCollection:
-        from utils.input_generation import metas_to_ds
+        from HATfix.utils.input_generation import metas_to_ds
 
         logger = files.logger
         logger.debug("Getting recipe for reaction: HATfix")
