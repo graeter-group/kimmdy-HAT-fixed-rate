@@ -1,0 +1,55 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "type": "object",
+    "$id": "hat_fixed_rate-config",
+    "description": "Settings for HAT fixed rate reaction plugin",
+    "additionalProperties": false,
+    "properties": {
+      "frequency_factor": {
+        "type": "float",
+        "description": "Frequency factor",
+        "pytype": "float",
+        "minimum": 0
+      },
+      "barrier": {
+        "type": "float",
+        "description": "barrier for the reaction",
+        "pytype": "float",
+        "minimum": 0
+      },
+      "h_cutoff": {
+        "type": "float",
+        "description": "Cutoff for H atom",
+        "pytype": "float",
+        "default": 3
+      },
+      "polling_rate": {
+        "type": "integer",
+        "description": "Polling rate, defaults to 10",
+        "pytype": "int",
+        "default": 10
+      },
+      "change_coords": {
+        "type": "string",
+        "description": "How to change coordinates. H can be placed at the new position, or a (lambda)-dynamics simulation can be performed. For lambda-dynamics, set up the coordinate changer with slow_growth=True",
+        "pytype": "str",
+        "enum": ["place","lambda"],
+        "default": "place"
+      },
+      "kmc": {
+        "description": "KMC algorithm for this reaction. Default: extrande_mod",
+        "type": "string",
+        "pytype": "str",
+        "enum": ["rfkmc", "frm", "extrande", "extrande_mod"],
+        "default": "extrande_mod"
+      },
+      "keep_structures": {
+        "description": "For each reaction a structure is generated. If true, those are kept on disk, otherwise they are only kept in case of a failure. Default: False",
+        "type": "boolean",
+        "pytype": "bool",
+        "default": false
+      }
+    },
+    "required": ["frequency_factor","barrier"]
+  }
+    
